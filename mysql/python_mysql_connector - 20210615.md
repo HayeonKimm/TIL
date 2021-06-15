@@ -1,3 +1,6 @@
+# Python and Mysql connector -20210615
+
+
 ```python
 !pip install pymysql
 ```
@@ -161,6 +164,8 @@ conn.close() #db접속 종료시켜주는 코드
     496 Kelly's Gift Shop
     
 
+# customernumber 숫자값이 119인 customers 찾아내기 , 여러가지 방법
+
 
 ```python
 conn = pymysql.connect(host='localhost', port=3306,user='root',password='a1234',db='classicmodels')
@@ -306,6 +311,149 @@ conn.close()
     (465, 'Anton Designs, Ltd.', 'Anton', 'Carmen', '+34 913 728555', 'c/ Gobelas, 19-1 Urb. La Florida', None, 'Madrid', None, '28023', 'Spain', None, Decimal('0.00'))
     (471, 'Australian Collectables, Ltd', 'Clenahan', 'Sean', '61-9-3844-6555', '7 Allen Street', None, 'Glen Waverly', 'Victoria', '3150', 'Australia', 1611, Decimal('60300.00'))
     
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+# table: person
+## input()을 이용해서 수정할 데이터를 입력을 받아 수행하는 프로그램을 구현.
+### id, name
+
+
+```python
+num = int(input('num:'))
+dname = input('dname:')
+
+conn = pymysql.connect(host='localhost', port=3306,user='root',password='a1234',db='shop')
+cur=conn.cursor()
+
+sql='update dept SET dname=%s WHERE num = %s'#모든 데이터를 가져옴
+cur.execute(sql,(dname,num))
+
+print(sql)
+conn.commit()
+conn.close()
+```
+
+    num:10
+    dname:김하연
+    update dept SET dname=%s WHERE num = %s
+    
+
+# insert 하는 방법
+
+
+```python
+conn = pymysql.connect(host='localhost', port=3306,user='root',password='a1234',db='shop')
+cur=conn.cursor()
+
+data = (40,'이기상',21)
+sql = 'insert into dept(num,dname,dloc) value(%s,%s,%s)'
+
+cur.execute(sql,data)
+print(sql)
+
+conn.commit()
+conn.close()
+```
+
+    insert into dept(num,dname,dloc) value(%s,%s,%s)
+    
+
+# 여러개 insert 하는 방법
+
+
+```python
+conn = pymysql.connect(host='localhost', port=3306,user='root',password='a1234',db='shop')
+cur=conn.cursor()
+
+data = [(52,'김구라',21),(50,'레드',23)]
+sql = 'insert into dept(num,dname,dloc) value(%s,%s,%s)'
+
+cur.executemany(sql,data) #두개 이상의 배치처리 할 때
+print(sql)
+
+conn.commit()
+conn.close()
+```
+
+    insert into dept(num,dname,dloc) value(%s,%s,%s)
+    
+
+# 딕셔너리를 이용
+
+
+```python
+conn = pymysql.connect(host='localhost', port=3306,user='root',password='a1234',db='shop')
+cur=conn.cursor()
+
+data = [{'num':80,'dname':'강아지','dloc':'mountain'},{'num':224,'dname':'거북이','dloc':'sea'}]
+sql = 'insert into dept(num,dname,dloc) values(%(num)s,%(dname)s,%(dloc)s)'
+
+cur.executemany(sql,data) #두개 이상의 배치처리 할 때
+print(sql)
+
+conn.commit()
+conn.close()
+```
+
+    insert into dept(num,dname,dloc) values(%(num)s,%(dname)s,%(dloc)s)
+    
+
+# 값 삭제하기
+
+
+```python
+num = input('num:')
+numlist= num.split(',')
+
+data=[]
+
+for i in numlist:
+    data.append(int(i))
+print('data:',data)
+
+
+conn = pymysql.connect(host='localhost', port=3306,user='root',password='a1234',db='shop')
+cur=conn.cursor()
+
+
+sql = 'delete from dept where num=%s'
+cnt =cur.executemany(sql,data)
+print(sql)
+print('delete:%s'%(cnt)) # 삭제된 컬럼수 보여주기
+
+conn.commit()
+conn.close()
+```
+
+    num:50,80
+    data: [50, 80]
+    delete from dept where num=%s
+    delete:2
+    
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
+```
 
 
 ```python
