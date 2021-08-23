@@ -1,5 +1,3 @@
-Hi,
+# TIL
 
-
-
-This is a space where I take notes of what I have learned today.
+**TODAY I LEARNED**
