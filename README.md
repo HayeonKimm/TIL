@@ -16,3 +16,7 @@ PRODS associate 실기파트 공부
 **210921**
 
 PRODS associate 실기파트 공부 2
+
+**210922**
+
+PRODS associate 통계파트 공부
