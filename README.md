@@ -3,7 +3,7 @@
 
 ### PRODS <공부기록>
 
-**210918**
+<!-- **210918**
 
 PRODS 단순회귀분석, 다중회귀분석 파트공부
 
@@ -21,4 +21,4 @@ PRODS associate 실기파트 공부 2
 
 **210922**
 
-PRODS associate 통계파트 공부
+PRODS associate 통계파트 공부 -->
