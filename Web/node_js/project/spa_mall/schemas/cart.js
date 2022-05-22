@@ -1,4 +1,4 @@
-const mongoose = require("mongoose";)
+const mongoose = require("mongoose");
 
 
 const schemas =  new mongoose.Schema({
@@ -20,4 +20,4 @@ const schemas =  new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model("Cart", schema);
+module.exports = mongoose.model("Cart", schemas);
