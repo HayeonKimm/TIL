@@ -21,8 +21,6 @@ app.get("/", (req, res) => {
 
 
 
-
-
 app.listen(port, () => {
   console.log("서버가 켜졌어요!");
 });
